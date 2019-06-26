@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, FlatList } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import addressList from '/Users/RClarke/Documents/workspace/geethab/GottaGo/addressList.json';
 
 //HomeScreen Component
 class HomeScreen extends Component {
+  /*
   render() {
     return (
       <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
@@ -11,6 +13,22 @@ class HomeScreen extends Component {
         <Button 
           title= 'Go to Details'
           onPress={() => this.props.navigation.navigate('Details') }
+        />
+      </View>
+    );
+  }
+  */
+  render() {
+    return(
+      <View style={{flex: 1, flexDirection: 'column'}}>
+        <FlatList 
+          data={addressList}
+          renderItem={({item}) =>
+            <View>
+              <Text>{item.name}</Text>
+            </View>
+          }
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     );
